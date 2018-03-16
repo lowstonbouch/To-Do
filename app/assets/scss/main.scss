@@ -1,0 +1,163 @@
+$color: #262828;
+
+body {
+  color: $color;
+}
+
+header{
+  display: flex;
+  justify-content: space-around;
+  height: 60px;
+  align-items: center;
+}
+
+.root {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.todo-section{
+  display: flex;
+  flex-direction: column;
+  background: #f0f0f3;
+}
+
+.add-todo{
+  display: flex;
+  flex-direction: column;
+}
+
+.new-todo{
+    margin: 5px auto;
+    padding: 16px 16px 16px 60px;
+    border: none;
+    background: rgb(255, 255, 255);
+    box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.48);
+    font-size: 24px;
+    font-family: inherit;
+}
+
+.todo-list {
+  margin: 20px 0 0 0;
+  list-style: none;
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  width: 800px;
+  margin: 5px auto;
+  padding: 10px;
+  background: white;
+  border: 1px solid #00000030;
+}
+
+.footer{
+  color: #777;
+  padding: 10px 15px;
+  height: 20px;
+  text-align: center;
+  border-top: 1px solid #e6e6e6;
+}
+
+.todo-count{
+  float: left;
+  text-align: left;
+}
+
+.filters{
+  margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+
+.filters li {
+  display: inline;
+  padding: 5px;
+}
+
+.destroy{
+  float: right;
+  margin: 10px;
+}
+
+.button-nav{
+  display: flex;
+  justify-content: center;
+}
+
+.button-priority{
+  margin: 0 10px;
+  cursor: pointer;
+  padding: 5px;
+  background: #e4e4e4;
+  border: 1px solid #00000042;
+}
+
+// .button-priority:hover{
+//   background: green;
+// }
+
+.low-priority.selected-priority{
+  background: green;
+}
+
+.medium-priority.selected-priority{
+  background: yellow;
+}
+
+.hight-priority.selected-priority{
+  background: red;
+}
+
+.low-priority:hover{
+  background: green;
+}
+
+.medium-priority:hover{
+  background: yellow;
+}
+
+.hight-priority:hover{
+  background: red;
+}
+
+.todo-description{
+  width: 800px;
+  height: 150px;
+  margin: 10px auto;
+}
+
+.sort-button{
+  width: 120px;
+  height: 30px;
+  margin: 10px 0 0 200px;
+  background: white;
+  position: relative;
+}
+
+.sort-button.render-sort{
+  height: 150px;
+}
+
+.sort-todo-render{
+  background: white;
+  border: 1px solid black;
+}
+
+.sort{
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border: 1px solid;
+  border: 1px solid black;
+}
+
+.sort-item{
+  cursor: pointer;
+}
