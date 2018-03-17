@@ -67,7 +67,7 @@ export default class AddTodo extends Component {
         type="text"
         value={this.state.text}
         onChange={this.handleName}/>)
-      buttonSave = (  <button onClick = {() => this.editTodo()}> Save Todo </button>  )
+      buttonSave = (  <button onClick = {() => this.editTodo()} className="add-todo-button"> Save Todo </button>  )
     }
     else{
       name = (
@@ -78,39 +78,36 @@ export default class AddTodo extends Component {
         placeholder="What needs to be done?" 
         value={this.state.text}
         onChange={this.handleName}/>)
-        buttonSave = (   <button onClick = {() => this.saveTodo()}> Save Todo </button>   )
+        buttonSave = (   <button onClick = {() => this.saveTodo()} className="add-todo-button"> Save Todo </button>   )
     }
     return (
       <div className="add-todo">
       {name}
         <div className = "button-nav">
-        <a 
+        <span 
           className={classnames({
             'button-priority': true,
             'low-priority': true,
             'selected-priority': 1 === this.state.priority,
           })} 
           onClick = {() => this.editPriority(1)}>
-          Low
-        </a>
-        <a
+        </span>
+        <span
           className={classnames({
             'button-priority': true,
             'medium-priority': true,
             'selected-priority': 2 === this.state.priority,
           })} 
           onClick = {() => this.editPriority(2)}>
-          Medium
-        </a>
-        <a 
+        </span>
+        <span
           className={classnames({
             'button-priority': true,
             'hight-priority': true,
             'selected-priority': 3 === this.state.priority,
           })} 
           onClick = {() => this.editPriority(3)}>
-          Hight
-        </a>
+        </span>
         </div>
         <textarea className='todo-description' value={this.state.description} onChange={this.handleDescription} />
         {buttonSave} 
