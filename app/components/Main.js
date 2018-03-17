@@ -21,7 +21,6 @@ export default class Main extends React.Component {
 
   render() {
     const { todos, actions } = this.props;
-    console.log(this.props);
     let todoId = this.state.todoId;
     return (
       <Router>
