@@ -38,13 +38,19 @@ export default class TodoItem extends Component {
 
     return (
       <div className = "item">
+       <span className={classnames({
+            'low-priority': 1 === todo.priority,
+            'medium-priority': 2 === todo.priority,
+            'hight-priority': 3 === todo.priority,
+            'selected-priority': true,
+          })}></span>
       <input className="toggle"
              type="checkbox"
              checked={todo.completed}
              onChange={() => completeTodo(todo.id)} />
-      <label>
-        {todo.text}
-      </label>
+      <span className="name-todo">{todo.text}</span>
+      <span className="decription-todo">{todo.description}</span>
+      <span className="todo-date">{todo.date}</span>
       <button className="destroy"
               onClick={() => deleteTodo(todo.id)}>
               <Destroy />

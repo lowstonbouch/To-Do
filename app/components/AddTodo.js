@@ -29,7 +29,7 @@ export default class AddTodo extends Component {
   saveTodo = () => {
     if (this.state.text.length !== 0) {
       let date = new Date();
-      let stringDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
+      let stringDate = `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
       
       this.props.addTodo(this.state.text, this.state.priority, this.state.description, stringDate)
     }

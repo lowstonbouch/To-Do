@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import UndoRedo from '../containers/UndoRedo';
 
+
+import Tool from 'react-icons/lib/fa/align-justify';
+import Left from 'react-icons/lib/fa/caret-left';
+import Right from 'react-icons/lib/fa/caret-right';
+
 export default class Header extends Component {
 
   newTodo = () => {
@@ -13,11 +18,11 @@ export default class Header extends Component {
   render() {
     return (
         <header>
-            <button>
-                Tool
-            </button>
+            <div>
+                <Tool/><Right/>
+            </div>
             <UndoRedo />
-            <button 
+            <button className="add-todo-button"
             onClick = {() => this.newTodo()}>
                 Add todo
             </button>

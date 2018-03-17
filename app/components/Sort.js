@@ -23,8 +23,8 @@ export default class Sort extends Component {
         <div className="sort-item" onClick = {this.handleRender}>Sort by</div>
         <div className="sort-item" onClick = {() => handleSort('Sort from low to hight')}>Sort from low to hight</div>
         <div className="sort-item" onClick = {() => handleSort('Sort from high to low')}>Sort from high to low</div>
-        <div className="sort-item">Date up </div>
-        <div className="sort-item">Date down </div>
+        <div className="sort-item" onClick = {() => handleSort('Sort by date new first')}>Sort by date new first </div>
+        <div className="sort-item" onClick = {() => handleSort('Sort by date oldest first')}>Sort by date oldest first </div>
       </div>    
       :
       <div className="sort" onClick = {this.handleRender}>{sortList}</div>

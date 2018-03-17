@@ -33,9 +33,20 @@ export default class MainSection extends Component {
     this.setState({ sortList: sortName });
   }
 
-  bubbleSort = filteredTodos => {
+  bubbleSort = (filteredTodos, item) => {
     for (let i = 0; i < filteredTodos.length - 1; i++) {
-      let m_min = filteredTodos[i].priority;
+      if(item === 'date'){
+        let m_min = filteredTodos[i].date;
+        for (let j = i + 1; j < filteredTodos.length; j++) {
+          if (filteredTodos[j].date < m_min) {
+            let mm = filteredTodos[i];
+            m_min = filteredTodos[j].date;
+            filteredTodos[i] = filteredTodos[j];
+            filteredTodos[j] = mm;
+          }
+        }
+      }else {
+        let m_min = filteredTodos[i].priority;
         for (let j = i + 1; j < filteredTodos.length; j++) {
           if (filteredTodos[j].priority < m_min) {
             let mm = filteredTodos[i];
@@ -44,6 +55,8 @@ export default class MainSection extends Component {
             filteredTodos[j] = mm;
           }
         }
+      }
+        
     }
     return filteredTodos;
   }
@@ -70,12 +83,20 @@ export default class MainSection extends Component {
 
     let filteredTodos = todos.filter(TODO_FILTERS[filter])
     if(this.state.sortList === 'Sort from low to hight'){
-      filteredTodos = this.bubbleSort(filteredTodos);
+      filteredTodos = this.bubbleSort(filteredTodos,'priority');
     }
     if(this.state.sortList === 'Sort from high to low'){
-      filteredTodos = this.bubbleSort(filteredTodos);
+      filteredTodos = this.bubbleSort(filteredTodos,'priority');
       filteredTodos = filteredTodos.reverse();
     }
+    if(this.state.sortList === 'Sort by date new first'){
+      filteredTodos = this.bubbleSort(filteredTodos,'date');
+      filteredTodos = filteredTodos.reverse();
+    }
+    if(this.state.sortList === 'Sort by date oldest first'){
+      filteredTodos = this.bubbleSort(filteredTodos,'date');
+    }
+    
     console.log(filteredTodos);
     
     const completedCount = todos.reduce((count, todo) =>

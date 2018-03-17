@@ -6,7 +6,7 @@ const initialState = [
     description: 'how to use Redux',
     completed: false,
     priority: 1,
-    date: '24.03.1998 06:00',
+    date: '1998.03.24 06:00',
     id: 1
   },
   {
@@ -14,7 +14,7 @@ const initialState = [
     description: 'how to use Redux',
     completed: false,
     priority: 3,
-    date: '24.03.1998 06:00',
+    date: '1998.03.24 07:00',
     id: 2
   },
   {
@@ -22,7 +22,7 @@ const initialState = [
     description: 'how to use Redux',
     completed: false,
     priority: 2,
-    date: '24.03.1998 06:00',
+    date: '1998.03.24 08:00',
     id: 3
   },
   {
@@ -30,7 +30,7 @@ const initialState = [
     description: 'how to use Redux',
     completed: false,
     priority: 2,
-    date: '24.03.1998 06:00',
+    date: '1998.03.24 09:00',
     id: 4
   }
 ]
