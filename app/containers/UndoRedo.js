@@ -11,12 +11,14 @@ let UndoRedo = ({ canUndo, canRedo, onUndo, onRedo }) => (
     <button className={classnames({
             'undo-redo': true,
             'disabled': !canUndo,
+            'active': canUndo,
           })} onClick={onUndo} >
       <Left/>Undo
     </button>
     <button className={classnames({
             'undo-redo': true,
             'disabled': !canRedo,
+            'active': canRedo,
           })} onClick={onRedo}>
       Redo<Right/>
     </button>

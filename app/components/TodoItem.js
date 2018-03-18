@@ -4,7 +4,10 @@ import classnames from 'classnames';
 import TodoTextInput from './TodoTextInput';
 
 import Destroy from 'react-icons/lib/md/delete';
-import Edit from 'react-icons/lib/fa/edit'
+import Time from 'react-icons/lib/md/access-time';
+import Edit from 'react-icons/lib/fa/edit';
+import Completed from 'react-icons/lib/md/check-circle';
+
 
 export default class TodoItem extends Component {
   static propTypes = {
@@ -37,28 +40,39 @@ export default class TodoItem extends Component {
     const { todo, completeTodo, deleteTodo } = this.props
 
     return (
-      <div className = "item">
+      <div className={classnames({
+        'item': true,
+        'completed': todo.completed,
+      })}>
        <span className={classnames({
             'low-priority': 1 === todo.priority,
             'medium-priority': 2 === todo.priority,
             'hight-priority': 3 === todo.priority,
             'selected-priority': true,
           })}></span>
-      <input className="toggle"
-             type="checkbox"
-             checked={todo.completed}
-             onChange={() => completeTodo(todo.id)} />
+      <div className="toggle">
+        <div className="pretty p-default p-round">
+          <input type="checkbox"
+          checked={todo.completed}
+          onChange={() => completeTodo(todo.id)} />
+            <div className="state p-success-o">
+              <label></label>
+            </div>
+        </div>
+      </div>
+      {todo.completed ? <span className="todo-completed-info"><Completed /> completed</span>:false}
       <span className="name-todo">{todo.text}</span>
-      <span className="decription-todo">{todo.description}</span>
+      <span className="description-todo">{todo.description}</span>
+      <Time className="todo-date-logo" />
       <span className="todo-date">{todo.date}</span>
-      <button className="destroy"
+      <span className="destroy"
               onClick={() => deleteTodo(todo.id)}>
               <Destroy />
-      </button>
-      <button className="edit"
+      </span>
+      <span className="edit"
               onClick={this.handleEdit}>
               <Edit />
-      </button>
+      </span>
     </div>
     )
   }

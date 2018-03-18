@@ -61,7 +61,8 @@ const todos = (state = initialState, action) => {
           { ...todo,
              text: action.text,
              priority: action.priority,
-             description: action.description } :
+             description: action.description,
+             completed: action.completed } :
           todo
       )
 

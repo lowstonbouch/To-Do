@@ -5,6 +5,7 @@ import img from '../assets/images/react_logo_512x512.png';
 
 
 export default class Tool extends Component {
+
   render() {
     return (
       <div className={classnames({ 
@@ -19,10 +20,14 @@ export default class Tool extends Component {
       />
         <span className={classnames({ 
           'tool-item': true,
-          'none': !this.props.renderTool,})}>Home</span>
+          'none': !this.props.renderTool,
+          'selected': 'home' === this.props.toolItem})}
+          onClick = {() => this.props.handleSelectedItem('home')}>Home</span>
         <span className={classnames({ 
           'tool-item': true,
-          'none': !this.props.renderTool,})}>Settings</span>
+          'none': !this.props.renderTool,
+          'selected': 'settings' === this.props.toolItem})}
+          onClick = {() => this.props.handleSelectedItem('settings')}>Settings</span>
         </div>
     )
   }

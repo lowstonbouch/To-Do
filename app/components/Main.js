@@ -12,6 +12,7 @@ export default class Main extends React.Component {
     addTodo: false,
     todoId: undefined,
     renderTool: false,
+    toolItem: 'home',
   }
 
   renderAddTodo = () => {
@@ -26,13 +27,17 @@ export default class Main extends React.Component {
     this.setState({renderTool: !this.state.renderTool});
   }
 
+  handleSelectedItem = text => {
+    this.setState({toolItem: text});
+  }
+
   render() {
     const { todos, actions } = this.props;
     let todoId = this.state.todoId;
     return (
       <Router>
         <React.Fragment>
-        <Tool renderTool={this.state.renderTool}/>
+        <Tool renderTool={this.state.renderTool} toolItem={this.state.toolItem} handleSelectedItem={this.handleSelectedItem}/>
         <Header renderAddTodo = {this.renderAddTodo} editTodoId = {this.editTodoId} renderTool = {this.renderTool}/>
           <div className = 'todo-section'>
           {this.state.addTodo ?

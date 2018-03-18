@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 import Footer from './Footer';
 import Sort from './Sort';
+import classnames from 'classnames';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/TodoFilters';
+
+import ViewList from 'react-icons/lib/md/view-list';
+import ViewModule from 'react-icons/lib/md/view-module';
 
 const TODO_FILTERS = {
   [SHOW_ALL]: () => true,
@@ -19,7 +23,8 @@ export default class MainSection extends Component {
 
   state = { 
     filter: SHOW_ALL,
-    sortList: 'Sort by', }
+    sortList: 'Sort by',
+    view: 'list', }
 
   handleClearCompleted = () => {
     this.props.actions.clearCompleted()
@@ -31,6 +36,10 @@ export default class MainSection extends Component {
 
   handleSort = sortName => {
     this.setState({ sortList: sortName });
+  }
+
+  handleView = text =>{
+    this.setState({view: text});
   }
 
   bubbleSort = (filteredTodos, item) => {
@@ -107,7 +116,24 @@ export default class MainSection extends Component {
     return (
       <React.Fragment>
         <Sort sortList = {this.state.sortList} handleSort = {this.handleSort}/>
-        <div className="todo-list">
+        <div className="view-nav">
+          <ViewList className={classnames({
+              'view-item': true,
+              'selected': 'list' === this.state.view,
+            })}
+            onClick ={() => this.handleView('list')}/>
+          <ViewModule className={classnames({
+              'view-item': true,
+              'selected': 'module' === this.state.view,
+            })}
+            onClick ={() => this.handleView('module')}/>
+        </div>
+        <div
+        className={classnames({
+          'todo-list': true,
+          'view-list': 'list' === this.state.view,
+          'view-module': 'module' === this.state.view,
+        })}>
           {filteredTodos.map(todo => 
             <TodoItem key={todo.id} todo={todo} {...actions} renderAddTodo = {this.props.renderAddTodo} editTodoId = {this.props.editTodoId}/> 
           )}

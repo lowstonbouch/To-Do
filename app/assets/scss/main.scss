@@ -1,3 +1,5 @@
+@import '~pretty-checkbox/src/pretty-checkbox.scss';
+
 $color: #262828;
 $lowColor: green;
 $mediumColor: yellow;
@@ -13,17 +15,20 @@ header{
   justify-content: space-around;
   height: 60px;
   align-items: center;
+  border-bottom: 1px solid #0008ff30;
 }
 
 .root {
   width: 1200px;
   margin: 0 auto;
+  border: 1px solid #0008ff30;
 }
 
 .todo-section{
   display: flex;
   flex-direction: column;
-  background: #f0f0f3;
+  position: relative;
+  background: #0000ff0d;
   height: 550px;
 }
 
@@ -36,34 +41,85 @@ header{
 }
 
 .new-todo{
-    margin: 5px auto;
-    padding: 16px 16px 16px 60px;
-    border: none;
-    background: rgb(255, 255, 255);
-    box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.48);
-    font-size: 24px;
-    font-family: inherit;
+  margin: 10px auto;
+  padding: 16px 16px 16px 10px;
+  width: 350px;
+  border: 1px solid #00000038;
+  background: white;
+  border-radius: 5px;
+  font-size: 24px;
+  font-family: inherit;
 }
 
 .todo-list {
   margin: 20px 0 0 0;
-  list-style: none;
   font-size: 24px;
+  z-index: 9;
+  overflow: auto;
+}
+
+.todo-list.view-list{
   display: flex;
   flex-direction: column;
-  z-index: 9;
 }
+
+.todo-list.view-module{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.todo-list.view-module .item{
+    width: 330px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+}
+
+.todo-list.view-module .toggle{
+  top: 33px;
+}
+
+.todo-list.view-module .name-todo{
+  top: 15px;
+}
+
+.todo-list.view-module .description-todo{
+  top: 60px;
+}
+
+.todo-list.view-module .destroy{
+  right: 12px;
+    top: 10px;
+}
+
+.todo-list.view-module .edit{
+  right: 10px;
+    top: 50px;
+}
+
+.todo-list.view-module .todo-date-logo{
+  right: 153px;
+  font-size: 12px;
+}
+
+.todo-list.view-module .todo-date{
+  left: 200px;
+  font-size: 12px;
+}
+
+
+
 
 .item {
   width: 800px;
+  height: 35px;
   font-family: "Arial";
   margin: 5px auto;
-  padding: 10px;
+  padding: 15px 10px;
   background: white;
   border: 1px solid #00000030;
   position: relative;
-  display: flex;
-  align-items: center;
 }
 
 .footer{
@@ -96,9 +152,17 @@ header{
 .destroy{
   position: absolute;
   right: 10px;
+  top: 15px;
+  color: #000002a6;
+  cursor: pointer;
+}
+
+.destroy:hover{
+  color: black;
 }
 
 .button-nav{
+  margin: 10px auto;
   display: flex;
   justify-content: center;
 }
@@ -184,6 +248,8 @@ header{
   width: 800px;
   height: 150px;
   margin: 10px auto;
+  margin-bottom: 20px;
+  border-radius: 5px;
 }
 
 .sort-button{
@@ -231,35 +297,53 @@ header{
   cursor: pointer;
 }
 
+.sort-item:hover{
+  color: #777cbf;
+}
+
 .edit {
   position: absolute;
   right: 60px;
+  top: 15px;
+  color: #000002a6;
+  cursor: pointer;
+}
+
+.edit:hover{
+  color:black;
 }
 
 .todo-date{
   position: absolute;
-  right: 115px;
+  color: #00000091;
+  left: 600px;
   top: 5px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .toggle{
-  margin-left: 30px;
+  position: absolute;
+  left: 62px;
+  top: 20px;
+}
+
+.item.completed{
+  opacity:0.6;
 }
 
 .name-todo{
   position: absolute;
   left: 110px;
-  top: 4px;
+  top: 7px;
   font-size: 20px;
   font-weight: bold;
   color: #000000c9;
 }
 
-.decription-todo{
+.description-todo{
   position: absolute;
   left: 110px;
-  top: 30px;
+  top: 37px;
   font-size: 14px;
   font-weight: bold;
   color: #0000009c;
@@ -283,6 +367,7 @@ header{
 
 .add-todo-button:hover{
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75) inset, 0px -2px 20px white, 0px 1px 5px rgba(0, 0, 0, 0.1), 0px 2px 10px rgba(0, 0, 0, 0.1);
+  background: #0000e8;
 }
 
 .undo-redo{
@@ -301,10 +386,12 @@ header{
 
 .undo-redo.disabled{
   color: #0000006b;
+  background: #00000033;
 }
 
-.undo-redo:hover{
+.undo-redo.active:hover{
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8) inset, 0px -2px 20px white, 0px 1px 5px rgba(0, 0, 0, 0.1), 0px 2px 10px rgba(0, 0, 0, 0.1);
+  background: #0000e8;
 }
 
 .content{
@@ -326,11 +413,16 @@ header{
   flex-direction: column;
   position: absolute;
   height: 610px;
-  width: 150px;
+  width: 160px;
 }
 
 .tool-render-button{
+  cursor: pointer;
   margin-left: 62px;
+}
+
+.tool-render-button:hover{
+  color: #0000ffb0;
 }
 
 .none{
@@ -338,14 +430,87 @@ header{
 }
 
 .image{
-  height: 40px;
-  width: 40px;
+  height: 61px;
+  width: 61px;
   margin: 0 auto;
 }
 
 .tool-item{
   color: white;
-    padding: 15px;
-    font-family: arial;
-    font-weight: bold;
+  padding: 15px;
+  font-family: arial;
+  font-weight: bold;
+  position: relative;
+  cursor: pointer;
+}
+
+.tool-item:hover{
+  background: #0000ff8c;
+}
+
+.tool-item.selected{
+  background: #0000ff8c;
+}
+
+.tool-item.selected:before{
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 6px;
+  height: 48px;
+  background: #0000a9;
+}
+
+.todo-date-logo{
+  position: absolute;
+  color: #00000091;
+  right: 230px;
+  top: 6px;
+  font-size: 14px;
+}
+
+.sort-arrow{
+  float: right;
+  font-size: 20px;
+}
+
+.add-todo-icon{
+  float: left;
+  font-size: 16px;
+}
+
+.todo-completed-info{
+  position: absolute;
+  right: 255px;
+  top: 4px;
+  color: green;
+  font-size: 14px;
+}
+
+.complete-todo{
+  font-size: 20px;
+  margin: 10px auto;
+}
+
+.view-nav{
+  position: absolute;
+  right: 188px;
+  font-size: 20px;
+  top: 20px;
+  
+}
+
+.view-item{
+  margin:5px;
+  color: #000002a6;
+  cursor: pointer;
+}
+
+.view-item:hover{
+  color: black;
+}
+
+.view-item.selected{
+  color: black;
 }

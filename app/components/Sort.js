@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
+import DropDown from 'react-icons/lib/md/arrow-drop-down';
+
 export default class Sort extends Component {
 
   state = {
@@ -25,14 +27,14 @@ export default class Sort extends Component {
       className = "sort-button">
       {this.state.sortFilters ?
       <div className = "sort-todo-render" onClick = {this.handleRender}>
-        <div className="sort-item" onClick = {this.handleRender}>Sort by</div>
+        <div className="sort-item" onClick = {this.handleRender}>Sort by <DropDown className="sort-arrow" /></div>
         <div className="sort-item" onClick = {() => handleSort('Sort from low to hight')}>Sort from low to hight</div>
         <div className="sort-item" onClick = {() => handleSort('Sort from high to low')}>Sort from high to low</div>
         <div className="sort-item" onClick = {() => handleSort('Sort by date new first')}>Sort by date new first </div>
         <div className="sort-item" onClick = {() => handleSort('Sort by date oldest first')}>Sort by date oldest first </div>
       </div>    
       :
-      <div className="sort" onClick = {this.handleRender}>{sortList}</div>
+      <div className="sort" onClick = {this.handleRender}>{sortList} <DropDown className="sort-arrow" /></div>
       }       
       </div>
     )
