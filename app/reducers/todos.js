@@ -2,37 +2,30 @@ import { ADD_TODO, DELETE_TODO, EDIT_TODO, COMPLETE_TODO, COMPLETE_ALL, CLEAR_CO
 import undoable from 'redux-undo';
 const initialState = [
   {
-    text: 'Low',
-    description: 'how to use Redux',
+    text: 'Wait for the result',
+    description: '',
     completed: false,
-    priority: 1,
-    date: '1998.03.24 06:00',
+    priority: 2,
+    date: '2018.03.20 01:00',
     id: 1
   },
   {
-    text: 'Hight',
-    description: 'how to use Redux',
-    completed: false,
-    priority: 3,
-    date: '1998.03.24 07:00',
+    text: 'Submit task',
+    description: 'Submit to DevIncubator',
+    completed: true,
+    priority: 1,
+    date: '2018.03.19 23:00',
     id: 2
   },
   {
-    text: 'Medium',
-    description: 'how to use Redux',
-    completed: false,
-    priority: 2,
-    date: '1998.03.24 08:00',
+    text: 'Make a web application',
+    description: 'Use: React/Redux sass Webpack',
+    completed: true,
+    priority: 3,
+    date: '2018.03.15 20:00',
     id: 3
   },
-  {
-    text: 'Medium',
-    description: 'how to use Redux',
-    completed: false,
-    priority: 2,
-    date: '1998.03.24 09:00',
-    id: 4
-  }
+
 ]
 
 const todos = (state = initialState, action) => {

@@ -14,5 +14,3 @@ Make sure you have the latest Stable or LTS version of Node.js installed.
 - `npm start` - start the dev server
 - `npm clean` - delete the dist folder
 - `npm run production` - create a production ready build in `dist` folder
-- `npm run lint` - execute an eslint check
-- `npm run coverage` - generate code coverage report in the `coverage` folder

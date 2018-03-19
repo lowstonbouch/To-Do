@@ -71,9 +71,10 @@ export default class AddTodo extends Component {
         <input
           className="new-todo"
           type="text"
+          title="Enter the name of todo"
           value={this.state.text}
           onChange={this.handleName} />)
-      buttonSave = (<button onClick={() => this.editTodo()} className={classnames( 
+      buttonSave = (<button type="submit" onClick={() => this.editTodo()} className={classnames( 
         'add-todo-button',
         'hover-'+themeItem,
           'bg-' + themeItem)}> Save Todo </button>)
@@ -83,14 +84,16 @@ export default class AddTodo extends Component {
         <input
           className="new-todo"
           type="text"
+          name="name-todo"
+          title="Enter the name of todo"
           autoFocus="true"
           placeholder="What needs to be done?"
           value={this.state.text}
           onChange={this.handleName} />)
-      buttonSave = (<button onClick={() => this.saveTodo()} className={classnames( 
+      buttonSave = (<button type="submit"onClick={() => this.saveTodo()} className={classnames( 
         'add-todo-button',
         'hover-'+themeItem,
-        'bg-' + themeItem)}> Save Todo </button>)
+        'bg-' + themeItem)}> Save Todo </button> )
     }
     return (
       <div className="add-todo">
