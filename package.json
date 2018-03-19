@@ -1,20 +1,14 @@
 {
   "name": "react-webpack-boilerplate",
   "version": "2.1.0",
-  "description": "Minimalistic ES6 React boilerplate",
+  "description": "To Do application",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
     "clean": "rimraf dist",
-    "production": "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
-    "lint": "eslint ./app/**/**.js",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "coverage": "jest --coverage",
-    "precommit": "cross-env npm run lint",
-    "prepush": "cross-env npm run lint"
+    "production": "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors"
   },
-  "author": "Kliment Petrov <kleopetroff@gmail.com>",
+  "author": "Aliaksandr Nemirau <lowstonbouch@gmail.com>",
   "license": "MIT",
   "jest": {
     "setupFiles": [
