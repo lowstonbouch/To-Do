@@ -1,9 +1,9 @@
 @import '~pretty-checkbox/src/pretty-checkbox.scss';
 
 $color: #262828;
-$lowColor: green;
-$mediumColor: yellow;
-$hightColor: red;
+$lowColor: #28c528;
+$mediumColor: #ffec0a;
+$hightColor: #ea0303;
 
 $color-list: (
   orange: #FF9800,
@@ -25,6 +25,14 @@ $color-list: (
     background-color: nth($value, 2);
   }
 
+  .filters.#{nth($value, 1)} .selected{
+    color: nth($value, 2);
+  }
+
+  .filters.#{nth($value, 1)}:hover{
+    color: nth($value, 2);
+  }
+
   .sort-todo-render.#{nth($value, 1)} {
     color: nth($value, 2);
   }
@@ -41,9 +49,14 @@ $color-list: (
     background-color: nth($value, 2);
   }
 
-  .#{nth($value, 1)}:hover{
+  .sort-item.#{nth($value, 1)}:hover{
     color: nth($value, 2);
   }
+
+  .tool-render-button.#{nth($value, 1)}:hover{
+    color: nth($value, 2);
+  }
+  
 
   .add-todo-button.#{nth($value, 1)}:hover{
     background-color: nth($value, 2);
@@ -110,6 +123,7 @@ header{
 }
 
 .todo-list {
+  flex: 1 0 auto;
   margin: 20px 0 0 0;
   font-size: 24px;
   z-index: 9;
@@ -183,28 +197,23 @@ header{
 .footer{
   color: #777;
   padding: 10px 15px;
-  height: 20px;
-  text-align: center;
+  height: 30px;
   border-top: 1px solid #e6e6e6;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-family: "Arial";
 }
 
 .todo-count{
-  float: left;
-  text-align: left;
+  margin: 0 10px;
 }
 
 .filters{
-  margin: 0;
-    padding: 0;
-    list-style: none;
-    position: absolute;
-    right: 0;
-    left: 0;
-}
-
-.filters li {
-  display: inline;
-  padding: 5px;
+  margin: 0 10px;
+  cursor: pointer;
 }
 
 .destroy{
@@ -477,10 +486,6 @@ header{
   margin-left: 62px;
 }
 
-.tool-render-button:hover{
-  color: #0000ffb0;
-}
-
 .none{
   display:none;
 }
@@ -576,6 +581,7 @@ header{
   height: 549px;
   display: flex;
   justify-content: center;
+  background: #0000ff0d;
 }
 
 .theme-item{
@@ -593,3 +599,26 @@ header{
   border-radius: 10px;
   margin-bottom: 10px;
 }
+
+.priority{
+  margin: 0;
+  font-size: 20px;
+  font-family: "Arial";
+    font-weight: bold;
+    color: #191919c9;
+}
+
+.todo-length{
+  margin-left: 200px;
+  margin-top: 30px;
+  margin-bottom: 0;
+  font-size: 20px;
+  font-family: "Arial";
+    font-weight: bold;
+    color: #191919c9;
+}
+
+.todo-length span{
+  color: #00000082;
+}
+

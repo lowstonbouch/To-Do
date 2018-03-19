@@ -19,11 +19,14 @@ export default class Header extends Component {
     }
 
     render() {
-        const { themeItem, addTodo } = this.props;
+        const { themeItem, addTodo, renderTool } = this.props;
         return (
             <header>
-                <div className="tool-render-button" onClick={this.props.renderTool}>
-                    <Tool /><Right />
+                <div className={classnames(
+                    'tool-render-button',
+                    'hover-' + themeItem,)} onClick={this.props.handleRenderTool}>
+                    {renderTool ? <React.Fragment><Left /><Tool /> </React.Fragment>: <React.Fragment>  <Tool /><Right /> </React.Fragment> }
+                   
                 </div>
                 <UndoRedo themeItem={themeItem} />
                 <button className={classnames(

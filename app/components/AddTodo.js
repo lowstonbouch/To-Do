@@ -40,7 +40,6 @@ export default class AddTodo extends Component {
   editTodo = () => {
     const { todo} = this.props;
     if (this.state.text !== todo.text || this.state.description !== todo.description || this.state.priority !== todo.priority || this.state.completed !== todo.completed) {
-      console.log(this.props);
       this.props.editTodo(this.props.todoId, this.state.text, this.state.priority, this.state.description, this.state.completed);
     }
     this.props.renderAddTodo();
@@ -91,11 +90,12 @@ export default class AddTodo extends Component {
       buttonSave = (<button onClick={() => this.saveTodo()} className={classnames( 
         'add-todo-button',
         'hover-'+themeItem,
-          'bg-' + themeItem)}> Save Todo </button>)
+        'bg-' + themeItem)}> Save Todo </button>)
     }
     return (
       <div className="add-todo">
         {name}
+        <p className="priority">Priority:</p>
         <div className="button-nav">
           <span
             className={classnames({

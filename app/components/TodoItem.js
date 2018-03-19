@@ -37,7 +37,16 @@ export default class TodoItem extends Component {
   }
 
   render() {
-    const { todo, completeTodo, deleteTodo } = this.props
+    const { todo, completeTodo, deleteTodo, view } = this.props
+
+    let nameLenght, descriptionLenght;
+    if(view === 'list'){
+       nameLenght = 31;
+       descriptionLenght = 60;
+    }else{
+       nameLenght = 15;
+       descriptionLenght = 30;
+    }
 
     return (
       <div className={classnames({
@@ -61,8 +70,8 @@ export default class TodoItem extends Component {
         </div>
       </div>
       {todo.completed ? <span className="todo-completed-info"><Completed /> completed</span>:false}
-      <span className="name-todo">{todo.text}</span>
-      <span className="description-todo">{todo.description}</span>
+      <span className="name-todo">{todo.text.length>=nameLenght? todo.text.slice(0,nameLenght)+'...' : todo.text}</span>
+      <span className="description-todo">{todo.description.length>=descriptionLenght? todo.description.slice(0,descriptionLenght)+'...' : todo.description}</span>
       <Time className="todo-date-logo" />
       <span className="todo-date">{todo.date}</span>
       <span className="destroy"

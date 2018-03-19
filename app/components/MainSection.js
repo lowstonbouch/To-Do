@@ -66,7 +66,7 @@ export default class MainSection extends Component {
   }
 
   renderFooter(completedCount) {
-    const { todos } = this.props
+    const { todos, themeItem } = this.props
     const { filter } = this.state
     const activeCount = todos.length - completedCount
 
@@ -76,7 +76,8 @@ export default class MainSection extends Component {
                 activeCount={activeCount}
                 filter={filter}
                 onClearCompleted={this.handleClearCompleted}
-                onShow={this.handleShow} />
+                onShow={this.handleShow}
+                themeItem={themeItem} />
       )
     }
   }
@@ -106,6 +107,8 @@ export default class MainSection extends Component {
       0
     )
 
+    const activeCount = todos.length - completedCount;
+
     return (
       <React.Fragment>
         <Sort sortList = {this.state.sortList} handleSort = {this.handleSort} themeItem={themeItem}/>
@@ -121,6 +124,7 @@ export default class MainSection extends Component {
             })}
             onClick ={() => handleView('module')}/>
         </div>
+        <p className="todo-length">To Do <span>({activeCount})</span></p>
         <div
         className={classnames({
           'todo-list': true,
@@ -128,7 +132,7 @@ export default class MainSection extends Component {
           'view-module': 'module' === view,
         })}>
           {filteredTodos.map(todo => 
-            <TodoItem key={todo.id} todo={todo} {...actions} renderAddTodo = {this.props.renderAddTodo} editTodoId = {this.props.editTodoId}/> 
+            <TodoItem key={todo.id} todo={todo} {...actions} view={view} renderAddTodo = {this.props.renderAddTodo} editTodoId = {this.props.editTodoId}/> 
           )}
         </div>
         {this.renderFooter(completedCount)}

@@ -34,7 +34,7 @@ export default class Main extends React.Component {
     this.setState({todoId: id,});
   }
 
-  renderTool = () => {
+  handleRenderTool = () => {
     this.setState({renderTool: !this.state.renderTool});
   }
 
@@ -49,7 +49,7 @@ export default class Main extends React.Component {
       <Router>
         <React.Fragment>
         <Tool renderTool={this.state.renderTool} toolItem={this.state.toolItem} handleSelectedItem={this.handleSelectedItem} themeItem={this.state.themeItem}/>
-        <Header renderAddTodo = {this.renderAddTodo} editTodoId = {this.editTodoId} renderTool = {this.renderTool} themeItem={this.state.themeItem} addTodo={this.state.addTodo}/>
+        <Header renderAddTodo = {this.renderAddTodo} editTodoId = {this.editTodoId} handleRenderTool = {this.handleRenderTool} themeItem={this.state.themeItem} addTodo={this.state.addTodo} renderTool={this.state.renderTool}/>
         {this.state.toolItem === 'home' ?  <div className = 'todo-section'>
           {this.state.addTodo ?
           <AddTodo todo={todos.present[todoId-1]} addTodo={actions.addTodo} editTodo={actions.editTodo} renderAddTodo = {this.renderAddTodo} todoId = {this.state.todoId} themeItem={this.state.themeItem} />
