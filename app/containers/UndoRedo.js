@@ -6,20 +6,25 @@ import classnames from 'classnames';
 import Left from 'react-icons/lib/fa/caret-left';
 import Right from 'react-icons/lib/fa/caret-right';
 
-let UndoRedo = ({ canUndo, canRedo, onUndo, onRedo }) => (
+let UndoRedo = ({ canUndo, canRedo, onUndo, onRedo, themeItem }) => (
   <div className = 'undo'>
-    <button className={classnames({
-            'undo-redo': true,
-            'disabled': !canUndo,
-            'active': canUndo,
-          })} onClick={onUndo} >
+    <button className={classnames(
+            'undo-redo',
+            {'disabled': !canUndo,
+            'active': canUndo},
+            'hover-'+themeItem,
+              'bg-' + themeItem
+          )}
+           onClick={onUndo} >
       <Left/>Undo
     </button>
-    <button className={classnames({
-            'undo-redo': true,
-            'disabled': !canRedo,
-            'active': canRedo,
-          })} onClick={onRedo}>
+    <button className={classnames(
+            'undo-redo',
+            {'disabled': !canRedo,
+            'active': canRedo},
+            'hover-'+themeItem,
+              'bg-' + themeItem
+          )} onClick={onRedo}>
       Redo<Right/>
     </button>
   </div>

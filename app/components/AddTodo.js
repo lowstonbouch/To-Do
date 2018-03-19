@@ -38,7 +38,8 @@ export default class AddTodo extends Component {
   }
 
   editTodo = () => {
-    if (this.state.text.length !== 0) {
+    const { todo} = this.props;
+    if (this.state.text !== todo.text || this.state.description !== todo.description || this.state.priority !== todo.priority || this.state.completed !== todo.completed) {
       console.log(this.props);
       this.props.editTodo(this.props.todoId, this.state.text, this.state.priority, this.state.description, this.state.completed);
     }
@@ -62,7 +63,7 @@ export default class AddTodo extends Component {
   }
 
   render() {
-    const { todo, completeTodo} = this.props
+    const { todo, completeTodo, themeItem} = this.props
 
     let name;
     let buttonSave;
@@ -73,7 +74,10 @@ export default class AddTodo extends Component {
           type="text"
           value={this.state.text}
           onChange={this.handleName} />)
-      buttonSave = (<button onClick={() => this.editTodo()} className="add-todo-button"> Save Todo </button>)
+      buttonSave = (<button onClick={() => this.editTodo()} className={classnames( 
+        'add-todo-button',
+        'hover-'+themeItem,
+          'bg-' + themeItem)}> Save Todo </button>)
     }
     else {
       name = (
@@ -84,7 +88,10 @@ export default class AddTodo extends Component {
           placeholder="What needs to be done?"
           value={this.state.text}
           onChange={this.handleName} />)
-      buttonSave = (<button onClick={() => this.saveTodo()} className="add-todo-button"> Save Todo </button>)
+      buttonSave = (<button onClick={() => this.saveTodo()} className={classnames( 
+        'add-todo-button',
+        'hover-'+themeItem,
+          'bg-' + themeItem)}> Save Todo </button>)
     }
     return (
       <div className="add-todo">

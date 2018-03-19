@@ -23,8 +23,7 @@ export default class MainSection extends Component {
 
   state = { 
     filter: SHOW_ALL,
-    sortList: 'Sort by',
-    view: 'list', }
+    sortList: 'Sort by', }
 
   handleClearCompleted = () => {
     this.props.actions.clearCompleted()
@@ -36,10 +35,6 @@ export default class MainSection extends Component {
 
   handleSort = sortName => {
     this.setState({ sortList: sortName });
-  }
-
-  handleView = text =>{
-    this.setState({view: text});
   }
 
   bubbleSort = (filteredTodos, item) => {
@@ -87,7 +82,7 @@ export default class MainSection extends Component {
   }
 
   render() {
-    const { todos, actions } = this.props;
+    const { todos, actions, view, handleView, themeItem } = this.props;
     const { filter } = this.state;
 
     let filteredTodos = todos.filter(TODO_FILTERS[filter])
@@ -106,8 +101,6 @@ export default class MainSection extends Component {
       filteredTodos = this.bubbleSort(filteredTodos,'date');
     }
     
-    console.log(filteredTodos);
-    
     const completedCount = todos.reduce((count, todo) =>
       todo.completed ? count + 1 : count,
       0
@@ -115,24 +108,24 @@ export default class MainSection extends Component {
 
     return (
       <React.Fragment>
-        <Sort sortList = {this.state.sortList} handleSort = {this.handleSort}/>
+        <Sort sortList = {this.state.sortList} handleSort = {this.handleSort} themeItem={themeItem}/>
         <div className="view-nav">
           <ViewList className={classnames({
               'view-item': true,
-              'selected': 'list' === this.state.view,
+              'selected': 'list' === view,
             })}
-            onClick ={() => this.handleView('list')}/>
+            onClick ={() => handleView('list')}/>
           <ViewModule className={classnames({
               'view-item': true,
-              'selected': 'module' === this.state.view,
+              'selected': 'module' === view,
             })}
-            onClick ={() => this.handleView('module')}/>
+            onClick ={() => handleView('module')}/>
         </div>
         <div
         className={classnames({
           'todo-list': true,
-          'view-list': 'list' === this.state.view,
-          'view-module': 'module' === this.state.view,
+          'view-list': 'list' === view,
+          'view-module': 'module' === view,
         })}>
           {filteredTodos.map(todo => 
             <TodoItem key={todo.id} todo={todo} {...actions} renderAddTodo = {this.props.renderAddTodo} editTodoId = {this.props.editTodoId}/> 

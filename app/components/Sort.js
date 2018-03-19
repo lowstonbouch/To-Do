@@ -19,22 +19,24 @@ export default class Sort extends Component {
   }
 
   render() {
-    const { sortList, handleSort } = this.props;
+    const { sortList, handleSort, themeItem} = this.props;
     return (
       <div className={classnames({ 
         'sort-buttom': true,
         'render-sort': this.state.renderFilters, })}
       className = "sort-button">
       {this.state.sortFilters ?
-      <div className = "sort-todo-render" onClick = {this.handleRender}>
-        <div className="sort-item" onClick = {this.handleRender}>Sort by <DropDown className="sort-arrow" /></div>
-        <div className="sort-item" onClick = {() => handleSort('Sort from low to hight')}>Sort from low to hight</div>
-        <div className="sort-item" onClick = {() => handleSort('Sort from high to low')}>Sort from high to low</div>
-        <div className="sort-item" onClick = {() => handleSort('Sort by date new first')}>Sort by date new first </div>
-        <div className="sort-item" onClick = {() => handleSort('Sort by date oldest first')}>Sort by date oldest first </div>
+      <div className={classnames( 
+        'sort-todo-render', themeItem )} onClick = {this.handleRender}>
+        <div className={classnames( 'sort-item', 'hover-'+themeItem )} onClick = {this.handleRender}>Sort by <DropDown className="sort-arrow" /></div>
+        <div className={classnames( 'sort-item', 'hover-'+themeItem )} onClick = {() => handleSort('Sort from low to hight')}>Sort from low to hight</div>
+        <div className={classnames( 'sort-item', 'hover-'+themeItem )} onClick = {() => handleSort('Sort from high to low')}>Sort from high to low</div>
+        <div className={classnames( 'sort-item', 'hover-'+themeItem )} onClick = {() => handleSort('Sort by date new first')}>Sort by date new first </div>
+        <div className={classnames( 'sort-item', 'hover-'+themeItem )} onClick = {() => handleSort('Sort by date oldest first')}>Sort by date oldest first </div>
       </div>    
       :
-      <div className="sort" onClick = {this.handleRender}>{sortList} <DropDown className="sort-arrow" /></div>
+      <div className={classnames( 
+        'sort', themeItem )} onClick = {this.handleRender}>{sortList} <DropDown className="sort-arrow" /></div>
       }       
       </div>
     )

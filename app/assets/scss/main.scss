@@ -4,7 +4,65 @@ $color: #262828;
 $lowColor: green;
 $mediumColor: yellow;
 $hightColor: red;
-$colorButton: #0000ffad;
+
+$color-list: (
+  orange: #FF9800,
+  hover-orange: #ff6a00,
+  selected-orange: #ff6a00,
+  purpur: #9859ea,
+  hover-purpur: #7435c5,
+  selected-purpur: #7435c5,
+  blue:  #6565ff,
+  hover-blue: #0000ffc9,
+  selected-blue: #0000ffc9,
+);
+
+
+
+@each $value in $color-list {
+
+  .bg-#{nth($value, 1)} {
+    background-color: nth($value, 2);
+  }
+
+  .sort-todo-render.#{nth($value, 1)} {
+    color: nth($value, 2);
+  }
+
+  .sort.#{nth($value, 1)} {
+    color: nth($value, 2);
+  }
+
+  .selected.#{nth($value, 1)} {
+    background-color: nth($value, 2);
+  }
+
+  .tool-item.#{nth($value, 1)}:hover{
+    background-color: nth($value, 2);
+  }
+
+  .#{nth($value, 1)}:hover{
+    color: nth($value, 2);
+  }
+
+  .add-todo-button.#{nth($value, 1)}:hover{
+    background-color: nth($value, 2);
+  }
+
+  .undo-redo.active.#{nth($value, 1)}:hover{
+    background-color: nth($value, 2);
+  }
+
+  .tool-item.selected-#{nth($value, 1)}:before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 6px;
+    height: 48px;
+    background: black;
+  }
+}
 
 body {
   color: $color;
@@ -275,7 +333,6 @@ header{
   cursor: pointer;
   outline: none;
   font-weight: bold;
-  color: #8AA8BD;
   position: absolute;
 }
 
@@ -289,7 +346,6 @@ header{
   cursor: pointer;
   outline: none;
   font-weight: bold;
-  color: #8AA8BD;
   position: absolute;
 }
 
@@ -297,9 +353,9 @@ header{
   cursor: pointer;
 }
 
-.sort-item:hover{
-  color: #777cbf;
-}
+// .sort-item:hover{
+//   color: #777cbf;
+// }
 
 .edit {
   position: absolute;
@@ -350,7 +406,7 @@ header{
 }
 
 .add-todo-button{
-  background: $colorButton;
+  // background: $colorButton;
 		border-radius: 30px;
 		padding: 10px 20px;
 		display: block;
@@ -367,11 +423,11 @@ header{
 
 .add-todo-button:hover{
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75) inset, 0px -2px 20px white, 0px 1px 5px rgba(0, 0, 0, 0.1), 0px 2px 10px rgba(0, 0, 0, 0.1);
-  background: #0000e8;
+  // background: #0000e8;
 }
 
 .undo-redo{
-  background: $colorButton;
+  // background: $colorButton;
   color:white;
   font-family: arial;
 	font-weight: bold;
@@ -391,7 +447,7 @@ header{
 
 .undo-redo.active:hover{
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8) inset, 0px -2px 20px white, 0px 1px 5px rgba(0, 0, 0, 0.1), 0px 2px 10px rgba(0, 0, 0, 0.1);
-  background: #0000e8;
+  // background: #0000e8;
 }
 
 .content{
@@ -402,7 +458,7 @@ header{
   position: absolute;
   height: 610px;
   width: 0px;
-  background: $colorButton;
+  // background: $colorButton;
   z-index: 11;
   transition: width 0.3s;
 
@@ -444,23 +500,23 @@ header{
   cursor: pointer;
 }
 
-.tool-item:hover{
-  background: #0000ff8c;
-}
+// .tool-item:hover{
+//   background: #0000ff8c;
+// }
 
-.tool-item.selected{
-  background: #0000ff8c;
-}
+// .tool-item.selected{
+//   background: #0000ff8c;
+// }
 
-.tool-item.selected:before{
-  content: "";
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 6px;
-  height: 48px;
-  background: #0000a9;
-}
+// .tool-item.selected:before{
+//   content: "";
+//   position: absolute;
+//   left: 0px;
+//   top: 0px;
+//   width: 6px;
+//   height: 48px;
+//   background: #0000a9;
+// }
 
 .todo-date-logo{
   position: absolute;
@@ -513,4 +569,27 @@ header{
 
 .view-item.selected{
   color: black;
+}
+
+.section-settings{
+  width: 1200px;
+  height: 549px;
+  display: flex;
+  justify-content: center;
+}
+
+.theme-item{
+  width: 100px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin:20px;
+}
+
+.them-item-color{
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
