@@ -123,6 +123,7 @@ header{
 }
 
 .todo-list {
+  height: 70%;
   flex: 1 0 auto;
   margin: 20px 0 0 0;
   font-size: 24px;
@@ -139,6 +140,7 @@ header{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: flex-start;
 }
 
 .todo-list.view-module .item{
@@ -180,9 +182,6 @@ header{
   font-size: 12px;
 }
 
-
-
-
 .item {
   width: 800px;
   height: 35px;
@@ -191,6 +190,7 @@ header{
   padding: 15px 10px;
   background: white;
   border: 1px solid #00000030;
+  border-radius: 3px;
   position: relative;
 }
 
@@ -258,14 +258,14 @@ header{
 .medium-priority:after{
   content: "M";
   color: white;
-  margin: 4px 0px 0px 8px;
+  margin: 4px 0px 0px 8.5px;
   display: block;
 }
 
 .hight-priority:after{
   content: "H";
   color: white;
-  margin: 4px 0px 0px 10px;
+  margin: 4px 0px 0px 9.5px;
   display: block;
 }
 
@@ -557,7 +557,7 @@ header{
 .view-nav{
   position: absolute;
   right: 188px;
-  font-size: 20px;
+  font-size: 26px;
   top: 20px;
   
 }
