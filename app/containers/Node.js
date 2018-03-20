@@ -1,9 +1,9 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import PropTypes from 'prop-types'
-import Main from '../components/Main'
-import * as actions from '../actions'
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
+import Main from '../components/Main';
+import * as actions from '../actions';
 
 const Node = ({todos, actions}) => (
       <Main todos={todos} actions={actions} />

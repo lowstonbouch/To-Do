@@ -20,25 +20,24 @@ export default class AddTodo extends Component {
   }
 
   handleDescription = event => {
-    this.setState({ description: event.target.value })
+    this.setState({ description: event.target.value });
   }
 
   handleName = event => {
-    this.setState({ text: event.target.value })
+    this.setState({ text: event.target.value });
   }
 
   saveTodo = () => {
     if (this.state.text.length !== 0) {
       let date = new Date();
-      let stringDate = `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
-
+      let stringDate = `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
       this.props.addTodo(this.state.text, this.state.priority, this.state.description, stringDate)
     }
     this.props.renderAddTodo();
   }
 
   editTodo = () => {
-    const { todo} = this.props;
+    const { todo } = this.props;
     if (this.state.text !== todo.text || this.state.description !== todo.description || this.state.priority !== todo.priority || this.state.completed !== todo.completed) {
       this.props.editTodo(this.props.todoId, this.state.text, this.state.priority, this.state.description, this.state.completed);
     }
@@ -46,12 +45,12 @@ export default class AddTodo extends Component {
   }
 
   handleCompleted = () => {
-    this.setState({completed: !this.state.completed})
+    this.setState({ completed: !this.state.completed })
   }
 
-  componentWillMount() {   
+  componentWillMount() {
     if (this.props.todoId) {
-      const {todo} = this.props
+      const { todo } = this.props
       this.setState({
         text: todo.text,
         description: todo.description,
@@ -62,7 +61,7 @@ export default class AddTodo extends Component {
   }
 
   render() {
-    const { todo, completeTodo, themeItem} = this.props
+    const { todo, completeTodo, themeItem } = this.props
 
     let name;
     let buttonSave;
@@ -74,10 +73,10 @@ export default class AddTodo extends Component {
           title="Enter the name of todo"
           value={this.state.text}
           onChange={this.handleName} />)
-      buttonSave = (<button type="submit" onClick={() => this.editTodo()} className={classnames( 
+      buttonSave = (<button type="submit" onClick={() => this.editTodo()} className={classnames(
         'add-todo-button',
-        'hover-'+themeItem,
-          'bg-' + themeItem)}> Save Todo </button>)
+        'hover-' + themeItem,
+        'bg-' + themeItem)}> Save Todo </button>)
     }
     else {
       name = (
@@ -90,10 +89,10 @@ export default class AddTodo extends Component {
           placeholder="What needs to be done?"
           value={this.state.text}
           onChange={this.handleName} />)
-      buttonSave = (<button type="submit"onClick={() => this.saveTodo()} className={classnames( 
+      buttonSave = (<button type="submit" onClick={() => this.saveTodo()} className={classnames(
         'add-todo-button',
-        'hover-'+themeItem,
-        'bg-' + themeItem)}> Save Todo </button> )
+        'hover-' + themeItem,
+        'bg-' + themeItem)}> Save Todo </button>)
     }
     return (
       <div className="add-todo">
@@ -126,16 +125,16 @@ export default class AddTodo extends Component {
           </span>
         </div>
         {this.props.todoId ? <div className="complete-todo">
-            <div className="pretty p-default p-round">
-              <input type="checkbox"
-                checked={this.state.completed}
-                onChange={this.handleCompleted} />
-              <div className="state p-success-o">
-                <label> Completed</label>
-              </div>
+          <div className="pretty p-default p-round">
+            <input type="checkbox"
+              checked={this.state.completed}
+              onChange={this.handleCompleted} />
+            <div className="state p-success-o">
+              <label> Completed</label>
             </div>
-          </div> :
-            false}
+          </div>
+        </div> :
+          false}
         <textarea className='todo-description' placeholder="Description" value={this.state.description} onChange={this.handleDescription} />
         {buttonSave}
       </div>
